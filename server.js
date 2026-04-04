@@ -12,10 +12,7 @@ if (fs.existsSync(publicDir)) {
   app.use(express.static(publicDir));
 }
 
-let dbStatus = 'disabled';
-if (process.env.DATABASE_URL) {
-  dbStatus = 'configured';
-}
+const dbStatus = 'not-required';
 
 app.get('/health', (_req, res) => {
   res.json({ status: 'ok', db: dbStatus });
